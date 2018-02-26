@@ -1,0 +1,22 @@
+.columnHeaders {
+    margin: 0;
+    margin-top: 16px
+}
+
+.row .col.m5 {
+    width: 20%;
+    margin: 0;
+    padding-left: 50px;
+    
+}
+
+.row .col.m4 {
+    width: 21%;
+    margin-bottom: 31px;
+    padding-left: 33px;
+}
+
+.row .headers{
+    margin-left: 21px;
+}
+
