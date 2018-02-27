@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import Welcome from './Welcome.js';
-import Catalogue from './catalogue.js';
+import Catalogue from './Catalogue.js';
+import Checkout from './Checkout.js';
 import './App.css'
 
 class App extends Component {
@@ -9,16 +10,42 @@ class App extends Component {
         super();
         this.state = {
             products: [],
-            cart: 0
+            order: [],
         }
     }
 
+    addItem = (id) => {
+        fetch("api/orders", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+              },
+            body: JSON.stringify({
+                id: id 
+            })
+        })
+    //     .then(() => console.log('yay') )
+    //   .catch(err => console.log(err))
+        .then(data => data.json())
+        .then((order) => {
+            this.setState = {
+            order: order
+            }
+        })
+        .catch(err => console.log(err))
+    }
+
     componentDidMount() {
-        fetch("/api/products")
+        fetch("api/products")
             .then(res => res.json())
             .then(products => this.setState({products}))
             .catch(err => console.log(err))
-            
+        
+        fetch("api/orders")
+            .then(res => res.json())
+            .then(order => this.setState({order}))
+            .catch(err => console.log(err))
+
     }
 
     render() {
@@ -28,7 +55,12 @@ class App extends Component {
                 <Route exact path='/' render={() => <Welcome />} 
                     />
                  <Route exact path='/catalogue' render={() =>
-                    <Catalogue products={this.state.products} />
+                    <Catalogue 
+                        products={this.state.products}
+                        addItem={this.addItem} />
+                    } />
+                <Route exact path='/checkout' render={() => 
+                    <Checkout order={this.state.order} /> 
                     } />
                 </Switch>
             </div>

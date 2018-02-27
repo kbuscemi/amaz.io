@@ -17,7 +17,8 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // put API routes here, before the 'catch all' route
-app.use('/api', require('./api/products'))
+app.use('/api/products', require('./routes/api/products'))
+app.use('/api/orders', require('./routes/api/orders'))
 
 // Catch-all route for SPA. necessary for a SPA's client-side routing to properly work
 // ('/*') is a wild card and will match anything/everything
