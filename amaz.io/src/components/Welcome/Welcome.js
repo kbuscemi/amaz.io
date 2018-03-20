@@ -5,7 +5,7 @@ const Welcome = () => {
     return (
         <div>
             <nav>
-                <Link to="/catalogue">View Catalogue</Link>
+                <Link to="/catalogue">Start Shopping</Link>
             </nav>
             <div>
                 <h1>Welcome to Amaz.io</h1>

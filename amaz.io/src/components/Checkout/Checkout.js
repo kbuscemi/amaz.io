@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import NavBar from './../NavBar/NavBar';
 
 const Checkout = () => {
     return (
         <div>
+            <NavBar />
             <div>
-                <Link to='/catalogue'>Back to Catalogue</Link>
+                <h1>Check-Out</h1>
             </div>
-            <h1>Check-Out</h1>
 
         </div>
     )

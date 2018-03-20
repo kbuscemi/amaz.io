@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './catalogue.css';
+import NavBar from './../NavBar/NavBar';
 
 
 const Catalogue = (props) => {
@@ -22,20 +23,18 @@ const Catalogue = (props) => {
     return (
         <div>
             <div>
-                <Link to="/">Back</Link>
+              <NavBar />
             </div>
-            <div>
-                <Link to="/checkout"><i className="material-icons">shopping_cart</i></Link>
+            <div className='headingContainer'>
+                <div className="row">
+                    <div className="col m4 columnHeaders"><h4>Name</h4></div>
+                    <div className="col m4 columnHeaders"><h4>Price</h4></div>
+                    <div className="col m4 columnHeaders"><h4>SKU</h4></div>
+                    <div className="col m4 columnHeaders"><h4>Description</h4></div>
+                    <div>{productTable}</div>
             </div>
-            <div className="row">
-            <div className=" col m12"><input type="textarea" placeholder="search bar" /></div>
-                <div className="col m4 columnHeaders"><h4>Name</h4></div>
-                <div className="col m4 columnHeaders"><h4>Price</h4></div>
-                <div className="col m4 columnHeaders"><h4>SKU</h4></div>
-                <div className="col m4 columnHeaders"><h4>Description</h4></div>
-                <div>{productTable}</div>
-            </div>
-        </div>
+          </div>
+      </div>
     )
 }
 

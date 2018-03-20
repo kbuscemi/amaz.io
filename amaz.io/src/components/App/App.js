@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import Welcome from './Welcome.js';
-import Catalogue from './Catalogue.js';
-import Checkout from './Checkout.js';
+import Welcome from './../Welcome/Welcome';
+import Catalogue from './../Catalogue/Catalogue';
+import Checkout from './../Checkout/Checkout';
 import './App.css'
 
 class App extends Component {
@@ -56,8 +56,8 @@ class App extends Component {
                     />
                  <Route exact path='/catalogue' render={() =>
                     <Catalogue 
-                        products={this.state.products}
-                        addItem={this.addItem} />
+                    products={this.state.products}
+                    addItem={this.addItem} />
                     } />
                 <Route exact path='/checkout' render={() => 
                     <Checkout order={this.state.order} /> 
