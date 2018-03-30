@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import Welcome from './../Welcome/Welcome';
 import Catalogue from './../Catalogue/Catalogue';
 import Checkout from './../Checkout/Checkout';
@@ -25,8 +25,8 @@ class App extends Component {
 
    
 
-    addItem = (id, products) => {
-        console.log(products)
+    addItem=(id, product) => {
+        console.log(product)
         fetch("api/orders", {
             method: 'POST',
             headers: {
@@ -34,7 +34,7 @@ class App extends Component {
               },
             body: JSON.stringify({
                 id: id, 
-                // products: products
+                product: product
             })
         })
         .then(data => data.json())
@@ -46,14 +46,13 @@ class App extends Component {
         })
         .catch(err => console.log(err))
     }
-
+    
     componentDidMount() {
-
+        
         fetch("api/products")
         .then(res => res.json())
         .then(products => this.setState({products}))
         .catch(err => console.log(err))
-        // console.warn(xhr.responseText)
         
         fetch("api/orders")
             .then(res => res.json())
@@ -91,4 +90,5 @@ class App extends Component {
     }
 }
 
-export default App;
+// export default App;
+export default withRouter(App);

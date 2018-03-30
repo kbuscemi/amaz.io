@@ -6,10 +6,7 @@ const Checkout = ({products, order}) => {
     return (
         <div>
             <NavBar />
-            <div>
                 <h4>Check-Out</h4>
-            </div>
-            {/* <div> */}
 
             <table className='centered'>
                 <thead>
@@ -31,7 +28,6 @@ const Checkout = ({products, order}) => {
 
                 </tbody>
             </table>
-            {/* </div> */}
         </div>
     )
 }

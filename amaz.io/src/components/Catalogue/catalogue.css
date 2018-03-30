@@ -10,6 +10,10 @@
     
 }
 
+h5 {
+    font-size: 32px;
+}
+
 .row .col.m3 {
     width: 18%;
     margin-left: 31px;
@@ -24,6 +28,12 @@
 .material-icons.addButton{
     background-color: purple;
 }
+
+.material-icons.addButton:hover {
+    background-color: white;
+    color: purple;
+}
+
 .addButton {
     background-color: purple;
     border-radius: 50%;
