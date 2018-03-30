@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Welcome.css'
 
 const Welcome = () => {
     return (
@@ -7,8 +8,8 @@ const Welcome = () => {
             <nav>
                 <Link to="/catalogue">Start Shopping</Link>
             </nav>
-            <div>
                 <h1>Welcome to Amaz.io</h1>
+            <div>
             </div>
         </div>
     )

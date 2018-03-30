@@ -1,22 +1,51 @@
 .columnHeaders {
     margin: 0;
-    margin-top: 16px
+    margin-top: 16px;
 }
 
 .row .col.m5 {
     width: 20%;
     margin: 0;
-    padding-left: 50px;
+    padding-left: 52px;
     
 }
 
-.row .col.m4 {
-    width: 21%;
-    margin-bottom: 31px;
-    padding-left: 33px;
+.row .col.m3 {
+    width: 18%;
+    margin-left: 31px;
+    margin-bottom: 28px;
 }
 
-.row .headers{
-    margin-left: 21px;
+.headingContainer {
+    border: 1px solid black;
+    margin: 44px;
 }
 
+.material-icons.addButton{
+    background-color: purple;
+}
+.addButton {
+    background-color: purple;
+    border-radius: 50%;
+    color: white;
+    height: 7vh;
+}
+
+.removeButton {
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    height: 7vh;
+    text-align: center;
+    padding-top: 13px;
+}
+
+.searchContainer {
+    margin: 0 400px 0 375px;
+}
+
+.search-wrapper {
+    background-color: white;
+    border: 1px solid black;
+    margin-top: 25px;
+}

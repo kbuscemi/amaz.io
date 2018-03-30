@@ -1,51 +1,65 @@
 import React, { Component } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Welcome from './../Welcome/Welcome';
 import Catalogue from './../Catalogue/Catalogue';
 import Checkout from './../Checkout/Checkout';
 import './App.css'
 
 class App extends Component {
+
     constructor() {
         super();
         this.state = {
             products: [],
             order: [],
+            search: ''
         }
     }
 
-    addItem = (id) => {
+
+    // searchItem = (e) => {
+    //     this.setState = {
+    //         search: e.target.value.substr(0, 10)
+    //     };
+    // }
+
+   
+
+    addItem = (id, products) => {
+        console.log(products)
         fetch("api/orders", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
               },
             body: JSON.stringify({
-                id: id 
+                id: id, 
+                // products: products
             })
         })
-    //     .then(() => console.log('yay') )
-    //   .catch(err => console.log(err))
         .then(data => data.json())
         .then((order) => {
-            this.setState = {
-            order: order
-            }
+            this.setState({
+                order: order
+            })
+            this.props.history.push('/checkout');
         })
         .catch(err => console.log(err))
     }
 
     componentDidMount() {
+
         fetch("api/products")
-            .then(res => res.json())
-            .then(products => this.setState({products}))
-            .catch(err => console.log(err))
+        .then(res => res.json())
+        .then(products => this.setState({products}))
+        .catch(err => console.log(err))
+        // console.warn(xhr.responseText)
         
         fetch("api/orders")
             .then(res => res.json())
+            // .catch(err => console.log(err))
             .then(order => this.setState({order}))
             .catch(err => console.log(err))
-
     }
 
     render() {
@@ -57,10 +71,19 @@ class App extends Component {
                  <Route exact path='/catalogue' render={() =>
                     <Catalogue 
                     products={this.state.products}
-                    addItem={this.addItem} />
+                    addItem={this.addItem}
+                    // search={this.state.search} 
+                    // searchItem={this.searchItem} 
+                    />
                     } />
                 <Route exact path='/checkout' render={() => 
-                    <Checkout order={this.state.order} /> 
+                    this.state.products ?
+                        <Checkout 
+                        order={this.state.order}
+                                //   products={this.state.products}
+                        /> 
+                    :
+                        <h4>Loading</h4>
                     } />
                 </Switch>
             </div>
