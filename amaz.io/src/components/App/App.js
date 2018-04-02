@@ -25,7 +25,7 @@ class App extends Component {
 
    
 
-    addItem=(id, product) => {
+    addItem = (product) => {
         console.log(product)
         fetch("api/orders", {
             method: 'POST',
@@ -33,7 +33,6 @@ class App extends Component {
                 "Content-Type": "application/json"
               },
             body: JSON.stringify({
-                id: id, 
                 product: product
                 
             })
@@ -43,7 +42,6 @@ class App extends Component {
             this.setState({
                 order: order
             })
-            // this.props.history.push('/checkout');
         })
         .catch(err => console.log(err))
     }
@@ -52,12 +50,12 @@ class App extends Component {
         
         fetch("api/products")
         .then(res => res.json())
-        .then(products => this.setState({products}))
+        .then(products => this.setState({ products }))
         .catch(err => console.log(err))
         
         fetch("api/orders")
             .then(res => res.json())
-            .then(order => this.setState({order}))
+            .then(order => this.setState({ order }))
             .catch(err => console.log(err))
     }
 

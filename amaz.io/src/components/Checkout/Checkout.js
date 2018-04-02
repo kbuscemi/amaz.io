@@ -18,7 +18,7 @@ const Checkout = ({products, order}) => {
                 </thead>
 
                 <tbody>
-                    {Array.isArray(order) && order.map((product, idx) =>
+                    {order.map((product, idx) =>
                         <tr key={idx} className='details'>
                             <td>{product.name}<p>Hi</p></td>
                             <td>{product.price}</td>

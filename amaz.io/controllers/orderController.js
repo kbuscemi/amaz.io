@@ -14,16 +14,6 @@ function createOrder(req, res) {
     })
 }
 
-function addToOrder(req, res) {
-    Order.find({})
-    .then(function(order) {
-        order.products.push(req.body.id);
-        order.save(function(err) {;
-        res.json(order);
-        })
-    })
-}
-
 function getOrder(req, res) {
     Order.findOne({})
     .populate('products')
@@ -34,9 +24,20 @@ function getOrder(req, res) {
     })
 }
 
+function addToOrder(req, res) {
+    Order.find({})
+    .then(function(order) {
+        order.products.push(req.body.id);
+        order.save(function(err) {;
+        res.json(order);
+        })
+    })
+}
+
+
 
 module.exports = {
     createOrder,
-    addToOrder,
-    getOrder
+    getOrder,
+    addToOrder
 }

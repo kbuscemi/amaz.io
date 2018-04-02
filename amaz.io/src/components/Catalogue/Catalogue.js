@@ -3,8 +3,8 @@ import './catalogue.css';
 import NavBar from './../NavBar/NavBar';
 
 
-const Catalogue = (props) => {    
-    const productTable = props.products.map((product, idx) => {
+const Catalogue = ({addItem, products}) => {    
+    const productTable = products.map((product, idx) => {
         return (
             <div key={idx}>
                 <div className="row">
@@ -13,8 +13,8 @@ const Catalogue = (props) => {
                     <div className="col m5"><p>{product.sku}</p></div>
                     <div className="col m5"><p>{product.description}</p></div>
                     <div className="col m5"><button className="material-icons addButton"
-                            onClick={() => props.addItem(product._id)} 
-                            id={product._id}
+                            onClick={() => addItem(product)} 
+                            // id={product._id}
                             product={product}
                             >add</button>
                         <i className="material-icons removeButton">close</i></div> 
