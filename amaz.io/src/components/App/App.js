@@ -35,6 +35,7 @@ class App extends Component {
             body: JSON.stringify({
                 id: id, 
                 product: product
+                
             })
         })
         .then(data => data.json())
@@ -42,7 +43,7 @@ class App extends Component {
             this.setState({
                 order: order
             })
-            this.props.history.push('/checkout');
+            // this.props.history.push('/checkout');
         })
         .catch(err => console.log(err))
     }
@@ -56,7 +57,6 @@ class App extends Component {
         
         fetch("api/orders")
             .then(res => res.json())
-            // .catch(err => console.log(err))
             .then(order => this.setState({order}))
             .catch(err => console.log(err))
     }
@@ -79,7 +79,6 @@ class App extends Component {
                     this.state.products ?
                         <Checkout 
                         order={this.state.order}
-                                //   products={this.state.products}
                         /> 
                     :
                         <h4>Loading</h4>

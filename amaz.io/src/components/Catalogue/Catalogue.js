@@ -30,10 +30,10 @@ const Catalogue = (props) => {
             </div>
             <div className='headingContainer'>
                 <div className="row">
-                    <div className="col m3 columnHeaders"><h5>Name</h5></div>
-                    <div className="col m3 columnHeaders"><h5>Price</h5></div>
-                    <div className="col m3 columnHeaders"><h5>SKU</h5></div>
-                    <div className="col m3 columnHeaders"><h5>Description</h5></div>
+                    <div className="col m3 columnHeaders"><h3>Name</h3></div>
+                    <div className="col m3 columnHeaders"><h3>Price</h3></div>
+                    <div className="col m3 columnHeaders"><h3>SKU</h3></div>
+                    <div className="col m3 columnHeaders"><h3>Description</h3></div>
                     <div>{productTable}</div>
                 </div>
             </div>
