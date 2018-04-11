@@ -14,7 +14,6 @@ const Catalogue = ({addItem, products}) => {
                     <div className="col m5"><p>{product.description}</p></div>
                     <div className="col m5"><button className="material-icons addButton"
                             onClick={() => addItem(product)} 
-                            // id={product._id}
                             product={product}
                             >add</button>
                         <i className="material-icons removeButton">close</i></div> 

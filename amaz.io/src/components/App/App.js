@@ -23,8 +23,8 @@ class App extends Component {
     //     };
     // }
 
-   
-
+    
+    
     addItem = (product) => {
         console.log(product)
         fetch("api/orders", {
@@ -32,35 +32,35 @@ class App extends Component {
             headers: {
                 "Content-Type": "application/json"
               },
-            body: JSON.stringify({
-                product: product
-                
+              body: JSON.stringify({
+                  product: product
+                  
+                })
             })
-        })
-        .then(data => data.json())
-        .then((order) => {
-            this.setState({
-                order: order
+            .then(data => data.json())
+            .then((order) => {
+                this.setState({ 
+                    order
+                });
             })
-        })
-        .catch(err => console.log(err))
-    }
-    
-    componentDidMount() {
-        
-        fetch("api/products")
-        .then(res => res.json())
-        .then(products => this.setState({ products }))
-        .catch(err => console.log(err))
-        
-        fetch("api/orders")
-            .then(res => res.json())
-            .then(order => this.setState({ order }))
             .catch(err => console.log(err))
-    }
-
-    render() {
-        return (
+        }
+        
+        componentDidMount() {
+            
+            fetch("api/products")
+            .then(res => res.json())
+            .then(products => this.setState({ products }))
+            .catch(err => console.log(err))
+            
+            fetch("api/orders")
+                .then(res => res.json())
+                .then(order => this.setState({ order }))
+                .catch(err => console.log(err))
+        }
+        
+        render() {
+            return (
             <div>
                 <Switch>
                 <Route exact path='/' render={() => <Welcome />} 
@@ -74,12 +74,12 @@ class App extends Component {
                     />
                     } />
                 <Route exact path='/checkout' render={() => 
-                    this.state.products ?
+                    // this.state.products ?
                         <Checkout 
                         order={this.state.order}
                         /> 
-                    :
-                        <h4>Loading</h4>
+                    // :
+                    //     <h4>Loading</h4>
                     } />
                 </Switch>
             </div>

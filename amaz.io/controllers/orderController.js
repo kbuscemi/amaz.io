@@ -14,22 +14,40 @@ function createOrder(req, res) {
     })
 }
 
-function getOrder(req, res) {
-    Order.findOne({})
-    .populate('products')
-    .exec(function(err, order) {
-        if (err) console.log(err);
-        console.log(order)
-        res.json(order).status(200)
-    })
+// function getOrder(req, res) {
+//     Order.findOne({})
+//     .populate('products')
+//     .exec(function(err, order) {
+//         if (err) console.log(err);
+//         console.log(order)
+//         res.json(order.products).status(200)
+//     })
+// }
+
+// function addToOrder(req, res) {
+//     Order.find({})
+//     .then(function(order) {
+//         order.products.push(req.body.id);
+//         order.save(function(err) {;
+//         res.json(order);
+//         })
+//     })
+// }
+
+function allOrders(req, res) {
+    Order.find({})
+        .then(orders => res.json(orders).status(200))
+        .catch(err => console.log(err));
 }
 
 function addToOrder(req, res) {
-    Order.find({})
-    .then(function(order) {
+    Order.findOne({})
+    .then(order => {
         order.products.push(req.body.id);
-        order.save(function(err) {;
-        res.json(order);
+        order.save().then(() => {
+            order.populate('products', function() {
+                res.json(order.products);
+            })
         })
     })
 }
@@ -38,6 +56,7 @@ function addToOrder(req, res) {
 
 module.exports = {
     createOrder,
-    getOrder,
-    addToOrder
+    // getOrder,
+    addToOrder,
+    allOrders
 }
